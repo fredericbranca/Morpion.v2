@@ -1,0 +1,155 @@
+/* Réinitialise les marges, paddings + police de la page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Visuel de la page */
+body {
+  height: 100vh;
+  overflow: hidden;                 /* empêcher la barre de défilement */
+  background: url(background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  text-align: center;
+  display: flex;                    /* Flexbox */
+  flex-direction: column;           /* organiser le contenu verticalement */
+  justify-content: center;          /* centrer le contenu horizontalement */
+  align-items: center;              /* centrer le contenu verticalement */
+}
+
+/* Barres horizontales */
+.bar {
+  position: absolute;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 8px;
+  z-index: -1;
+}
+
+#barHTop {
+  top: 17%;
+}
+
+#barHMid {
+  top: 50%;
+}
+
+#barHBot {
+  top: 83%;
+}
+
+#barVMid {
+  transform: rotate(90deg);
+  width: calc(100% + 10px);
+}
+
+#barVLeft {
+  left: -33%;
+  transform: rotate(90deg);
+  width: calc(100%);
+}
+
+#barVRight {
+  left: 33%;
+  transform: rotate(90deg);
+  width: calc(100%);
+}
+
+#barDiagD {
+  transform: rotate(45deg);
+  width: calc(141.4%);
+  left: -20.7%;
+  top: 50%;
+}
+
+#barDiagL {
+  transform: rotate(-45deg);
+  width: calc(141.4%);
+  left: -20.7%;
+  top: 50%;
+}
+
+/* Classe active pour les barres*/
+.active {
+  background-color: rgb(0, 0, 0);
+  z-index: 1;
+}
+
+/* Principalement pour la position des barres */
+#morpion {
+  position: relative;      /* Permet de positionner les barres à l'intérieur du morpion */
+  display: flex;           /* Tous les éléments enfants de #Morpion seront réaligné par défaut de manière à ce qu'ils soient tous sur la même ligne (même s'ils sont de type block). */
+  align-items: center;     /* Centre verticalement les éléments enfants à l'intérieur du conteneur */
+
+
+}
+
+#box {
+  display: grid;                          /* Affiche les éléments sous forme de grille */
+  grid-template-columns: repeat(3, auto); /* Crée 3 colonnes de largeur automatique */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Visuel des cases du morpion */
+.carre {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200px;
+  margin: 5px;
+  border-radius: 3%;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+/* Visuel de la partie instruction pour les joueurs */
+#statut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: calc(3 * 192px + 6 * 5px);
+  background: rgb(255, 255, 255, 0.3);
+  color: white;
+  font-size: large;
+  height: 70px;
+  width: 606px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .carre {
+    font-size: 150px;
+    width: 150px;
+    height: 150px;
+  }
+  #statut {
+    width: calc(3 * 140px + 6 * 5px);
+  }
+  }
+  
+  @media (max-width: 576px) {
+  .carre {
+  font-size: 100px;
+  width: 100px;
+  height: 100px;
+  }
+  #statut {
+  width: calc(3 * 90px + 6 * 5px);
+  font-size: small;
+  }
+  }
